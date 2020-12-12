@@ -39,8 +39,8 @@ namespace WorldLink.Repositories
 
         public void Remove(int id)
         {
-            var user = FindById(id);
-            _context.Contatos.Remove(user);
+            var entity = FindById(id);
+            _context.Contatos.Remove(entity);
         }
 
         public void Save()

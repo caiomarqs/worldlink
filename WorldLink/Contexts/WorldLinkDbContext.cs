@@ -10,6 +10,8 @@ namespace WorldLink.Contexts
     public class WorldLinkDbContext : DbContext
     {
         public DbSet<Contato> Contatos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
         public WorldLinkDbContext(DbContextOptions options) : base(options) { }
+
     }
 }

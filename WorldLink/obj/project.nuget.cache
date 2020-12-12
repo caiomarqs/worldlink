@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "NVWzU/oD3BJ/ih53TxLugh38K8Tky659wWK4y3Y53GxFOVfEqL2AXVN2ZcbUZJMxcGzZlT9aRYp0SNnlkrQIJw==",
+  "dgSpecHash": "uaDPF7N4bd7Ncz59z4wM4gbsMTnuFTiYvPuAoGPILyOGYbONwVVWx18BhIvZVltjha+v4/8qbsk6b7/vrlAMFw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Caio\\source\\repos\\WorldLink\\WorldLink\\WorldLink.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Caio\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\Caio\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Caio\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Caio\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

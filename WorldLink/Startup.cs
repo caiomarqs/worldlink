@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WorldLink.Contexts;
 using WorldLink.Repositories;
+using WorldLink.Services;
 
 namespace WorldLink
 {
@@ -26,7 +27,6 @@ namespace WorldLink
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
             //Para rodar no banco em memoria do EntityFramework, 
             //mude o parametro de GetConnectionString para "local",
             //Rode as migrations para criar o DB (exemplo no readme.md)
@@ -40,6 +40,9 @@ namespace WorldLink
             );
 
             services.AddScoped<IContatoRepository, ContatoRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
+            services.AddScoped<IDbInitializer, DbInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +68,14 @@ namespace WorldLink
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
+            //Set de um usuario admin quando o servidor inicia
+            var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+            using var scope = scopeFactory.CreateScope();
+            var dbInitializer = scope.ServiceProvider.GetService<IDbInitializer>();
+            dbInitializer.Initialize();
+            dbInitializer.SeedData();
         }
     }
 }

@@ -149,3 +149,5 @@ C:\Users\Caio\source\repos\WorldLink\WorldLink\bin\Debug\netcoreapp3.1\tr\Micros
 C:\Users\Caio\source\repos\WorldLink\WorldLink\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Caio\source\repos\WorldLink\WorldLink\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Caio\source\repos\WorldLink\WorldLink\obj\Debug\netcoreapp3.1\Razor\Views\Dash\Index.cshtml.g.cs
+C:\Users\Caio\source\repos\WorldLink\WorldLink\bin\Debug\netcoreapp3.1\BCrypt.Net-Next.dll
+C:\Users\Caio\source\repos\WorldLink\WorldLink\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs

@@ -20,8 +20,23 @@ namespace WorldLink.Controllers
 
         public IActionResult Index()
         {
-            var contatosUsuarios = _contatoRepository.ListAll();
-            return View(contatosUsuarios);
+            var contatos = _contatoRepository.ListAll();
+            return View(contatos);
+        }
+
+        [HttpPost]
+        public IActionResult Filtar(string email)
+        {
+            var contatosFiltrados = _contatoRepository.Query(
+                contato => contato.Nome.Contains(email)
+            );
+
+            if (contatosFiltrados.Count == 0)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View("Index", contatosFiltrados);
         }
     }
 }
