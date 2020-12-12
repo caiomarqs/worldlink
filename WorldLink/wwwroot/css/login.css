@@ -1,0 +1,82 @@
+﻿.login {
+    height: calc(100vh - 216px);
+    
+}
+
+
+    .login > .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 96px 0;
+    }
+
+    .login > .container > form {
+        width: 552px;
+        min-height: 420px;
+        background-color: #232323;
+        padding: 48px 36px;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .login > .container > form > p {
+            text-align: center;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 22px;
+            margin-top: 32px;
+        }
+
+        .login > .container > form > .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .login > .container > form > span {
+            color: #8b8b8b;
+            font-size: 14px;
+            line-height: 17px;
+            font-weight: 300;
+            margin-top: 32px;
+        }
+
+        .login > .container > form > input[type=submit] {
+            width: 212px;
+            height: 48px;
+            min-height: 48px;
+            border: 2px solid #FFFFFF;
+            box-sizing: border-box;
+            font-weight: 900;
+            font-size: 14px;
+            line-height: 17px;
+            text-align: center;
+            text-transform: uppercase;
+            background-color: transparent;
+            color: white;
+            align-self: center;
+        }
+
+        .login > .container > form > .form-group > input {
+            width: 480px;
+            height: 48px;
+            background-color: #151515;
+            border: none;
+            color: white;
+            padding: 0 16px;
+            margin-bottom: 8px;
+        }
+
+            .login > .container > form > .form-group > input:focus {
+                outline: 1px double;
+            }
+
+            .login > .container > form > .form-group > span {
+                color: #FF0000;
+                font-size: 14px;
+                line-height: 17px;
+            }
+
+
+

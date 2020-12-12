@@ -41,12 +41,12 @@ namespace WorldLink.Controllers
                 }
                 else
                 {
-                    TempData["error-msg"] = "A senha está errada!";
+                    TempData["msg"] = "A senha está errada!";
                 }
             }
             else
             {
-                TempData["error-msg"] = "Usuário inexistente!";
+                TempData["msg"] = "Usuário inexistente!";
             }
 
             return RedirectToAction("Index");

@@ -1,0 +1,61 @@
+﻿.dash {
+    min-height: calc(100vh - 216px);
+    padding-bottom: 96px;
+}
+
+    .dash > form {
+        width: 100%;
+        margin-top: 96px;
+        margin-bottom: 32px;
+        display: flex;
+        justify-content: center;
+    }
+
+        .dash > form > input[name="email"] {
+            flex: 1;
+            height: 48px;
+            background-color: #151515;
+            border: none;
+            color: white;
+            padding: 0 16px;
+            margin-right: 16px;
+        }
+
+        .dash > form > input[name="email"]:focus {
+                outline: 1px double;
+        }
+
+        .dash > form > input[type=submit] {
+            width: 212px;
+            height: 48px;
+            border: 2px solid #FFFFFF;
+            box-sizing: border-box;
+            font-weight: 900;
+            font-size: 14px;
+            line-height: 17px;
+            text-align: center;
+            text-transform: uppercase;
+            background-color: transparent;
+            color: white;
+            align-self: center;
+        }
+table {
+    color: white;
+    width: 100%;
+}
+
+    table > tbody > tr:first-of-type ~ tr{
+        border-top: 1px solid;
+        border-top-color: white;
+    }
+
+    table > tbody > tr > th, td {
+        padding: 16px 0;
+    }
+
+/*footer {
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+    width: 100%;
+}*/

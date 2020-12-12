@@ -34,14 +34,14 @@ namespace WorldLink.Controllers
                 _repository.Insert(contato);
                 _repository.Save();
 
-                TempData["success-msg"] = "Você está cadastrado para receber as novidades!";
+                TempData["msg"] = "Você está cadastrado para receber as novidades!";
             }
             else
             {
-                TempData["error-msg"] = "Você já está cadastrado para receber as novidades! Fique tranquilo!";
+                TempData["msg"] = "Seu email já foi cadastrado anteriormente. Fique tranquilo você receberá todas as novidades!";
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "#contact");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

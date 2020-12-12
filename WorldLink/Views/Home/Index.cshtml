@@ -2,23 +2,66 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+@section Styles{
+    <link rel="stylesheet" href="~/css/home.css" />
+}
 
-<form asp-action="Cadastrar">
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Nome"></label>
-        <input asp-for="Nome" class="form-control" />
-        <span asp-validation-for="Nome" class="text-danger"></span>
-    </div>
-    <input type="submit" value="Receber Novidades" class="btn btn-primary" />
-</form>
 
-<span>@TempData["success-msg"]</span>
-<span>@TempData["error-msg"]</span>
+<section id="home">
+    <h1>Internet Rápida e  Acessivel para todo o mundo</h1>
+    <p>A <strong>Magazine Maria</strong> está participando da inciativia internacional, para democratização de intenert pelo o mundo!</p>
+    <a href="#contact">Receber Novidades</a>
+</section>
+
+<section id="public">
+    <div class="container">
+        <div class="content">
+            <h1>WorldLink, internet para todos</h1>
+            <p>O WordlLink é uma rede de satélites lançados por empresas de diversos setores ao redor do mundo, com o intuito de prover internet para todas areas do globo!</p>
+            <p>A <strong>Magazine Maria</strong> não ficaria fora dessa, além de ser incetivadora do projeto, <strong>será a revendedora oficial no Brasil!</strong></p>
+            <p>Com a inteção de atender todas as aréas, até as mais remotas, o serviço será disponibilizado em fases. O serviço é para você que deseja internet de qualidade independete da região que reside!</p>
+        </div>
+        <div class="image">
+            <img src="~/images/img2.png" alt="Via Lactea" />
+        </div>
+    </div>
+</section>
+
+<section id="price">
+    <div class="container">
+        <h1>Alta Velocidade e Acessivel</h1>
+        <p>O WorldLink garante mais de <strong>150Mbps</strong> de velocidade de internet, você pagará pelo o plano mensal e a antena que fará a comunicação com a rede de satélites e nada mais!</p>
+        <h2>Antena WorldLink</h2>
+        <h6>R$ 150</h6>
+        <h2>Plano Mensal</h2>
+        <h6>R$ 50</h6>
+    </div>
+</section>
+
+<section id="contact">
+
+    <alert message="@TempData["msg"]"></alert>
+
+    <div class="container">
+
+        <h1>Registre-se para saber quando ficará disponivel em sua região</h1>
+
+        <form asp-action="Cadastrar">
+            <div class="form-group">
+                <input asp-for="Nome" placeholder="Insira seu nome" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Email" placeholder="Insira seu email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Inscrever-se" />
+        </form>
+    </div>
+</section>
+
+
+
 
 @section Scripts{
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js">

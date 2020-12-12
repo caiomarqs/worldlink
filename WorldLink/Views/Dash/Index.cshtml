@@ -3,26 +3,31 @@
 @{
     ViewData["Title"] = "Index";
 }
+@section Styles{
+    <link rel="stylesheet" href="~/css/dash.css" />
+}
 
-<form class="form-inline" asp-action="Filtar">
-    <input name="email" placeholder="Insira o que quer buscar"/>
-    <input type="submit" value="Buscar"/>
-</form>
+<div class="container dash">
+    <form class="form-inline" asp-action="Filtar">
+        <input name="email" placeholder="Insira o que quer buscar" />
+        <input type="submit" value="Buscar" />
+    </form>
 
-<table class="table">
-    <tr>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Opções</th>
-    </tr>
-    @foreach (var contato in Model)
-    {
+    <table>
         <tr>
-            <td>@contato.Nome</td>
-            <td>@contato.Email</td>
-            <td>
-                <button class="btn btn-primary">Excluir</button>
-            </td>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Opções</th>
         </tr>
-    }
-</table>
+        @foreach (var contato in Model)
+        {
+            <tr>
+                <td>@contato.Nome</td>
+                <td>@contato.Email</td>
+                <td>
+                    <button class="btn btn-primary">Excluir</button>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
