@@ -27,6 +27,8 @@ namespace WorldLink
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
+
             //Para rodar no banco em memoria do EntityFramework, 
             //mude o parametro de GetConnectionString para "local",
             //Rode as migrations para criar o DB (exemplo no readme.md)
@@ -43,6 +45,10 @@ namespace WorldLink
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             services.AddScoped<IDbInitializer, DbInitializer>();
+
+            services.AddSession(options =>
+                options.IdleTimeout = TimeSpan.FromDays(1) //Time out da sessao
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +63,9 @@ namespace WorldLink
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+
+            //Sessions
+            app.UseSession();
 
             app.UseRouting();
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,13 @@ namespace WorldLink.Controllers
 
         public IActionResult Index()
         {
+
+            //Verificação de login
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("userId")))
+            {
+                return RedirectToAction("Index", "Dash");
+            }
+
             return View();
         }
 
@@ -37,6 +45,8 @@ namespace WorldLink.Controllers
 
                 if (senhaTest)
                 {
+
+                    SetSession(hasUsuario);
                     return RedirectToAction("Index", "Dash");
                 }
                 else
@@ -51,6 +61,27 @@ namespace WorldLink.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            ClearSession();
+            return RedirectToAction("Index");
+        }
+
+
+        public void SetSession(Usuario usuario)
+        {
+            HttpContext.Session.SetString("userId", usuario.UsuarioId.ToString());
+            ViewBag.userId = usuario.UsuarioId.ToString();
+        }
+
+        public void ClearSession()
+        {
+            HttpContext.Session.SetString("userId", "");
+            ViewBag.userId = null;
+        }
+
     }
 
 }

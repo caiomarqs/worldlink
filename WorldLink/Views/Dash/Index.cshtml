@@ -1,7 +1,7 @@
 ﻿@model IList<Contato>;
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "DashBoard";
 }
 @section Styles{
     <link rel="stylesheet" href="~/css/dash.css" />
@@ -13,21 +13,32 @@
         <input type="submit" value="Buscar" />
     </form>
 
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Opções</th>
-        </tr>
-        @foreach (var contato in Model)
-        {
+
+    @if (Model.Count == 0)
+    {
+        <p>Não possui nem um cadastro na base de dados!</p>
+    }
+    else
+    {
+        <table>
             <tr>
-                <td>@contato.Nome</td>
-                <td>@contato.Email</td>
-                <td>
-                    <button class="btn btn-primary">Excluir</button>
-                </td>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Opções</th>
             </tr>
-        }
-    </table>
+            @foreach (var contato in Model)
+            {
+                <tr>
+                    <td>@contato.Nome</td>
+                    <td>@contato.Email</td>
+                    <td>
+                        <form asp-action="Remover">
+                            <input name="id" type="hidden" value="@contato.ContatoId" />
+                            <input type="submit" value="Excluir" class="remove-btn" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
 </div>

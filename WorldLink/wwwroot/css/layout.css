@@ -28,7 +28,24 @@ strong {
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
+    color: white;
 }
+
+.nav-item > a:hover {
+    text-decoration: none;
+}
+
+.nav-item > form > input[type=submit] {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: white;
+}
+
 
 footer {
     height: 120px;

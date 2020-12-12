@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,13 @@ namespace WorldLink.Controllers
 
         public IActionResult Index()
         {
+
+            //Verificação de login
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("userId")))
+            {
+                ViewBag.userId = HttpContext.Session.GetString("userId");
+            }
+
             return View();
         }
 
@@ -41,7 +49,7 @@ namespace WorldLink.Controllers
                 TempData["msg"] = "Seu email já foi cadastrado anteriormente. Fique tranquilo você receberá todas as novidades!";
             }
 
-            return RedirectToAction("Index", "#contact");
+            return Redirect($"{Url.Action("Index")}#contact");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -49,5 +57,6 @@ namespace WorldLink.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
