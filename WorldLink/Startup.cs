@@ -35,10 +35,10 @@ namespace WorldLink
             //--- ou ----
             //Para o sqlsever troque para "sqlserver", 
             //lembre-se de trocar a string de conexao em appsettings.json
-            //As tabelas podem ser criadas pelo o script .... , 
-            //ou pode ser aplicadas as migrations
+            //As tabelas podem ser criadas pelo o script create.sql , 
+            //ou pode ser aplicadas as migrations para a criação das tabelas
             services.AddDbContext<WorldLinkDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("local"))
+                options.UseSqlServer(Configuration.GetConnectionString("azure"))
             );
 
             services.AddScoped<IContatoRepository, ContatoRepository>();

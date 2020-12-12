@@ -24,7 +24,6 @@ namespace WorldLink.Services
         {
             using var serviceScope = _scopeFactory.CreateScope();
             using var context = serviceScope.ServiceProvider.GetService<WorldLinkDbContext>();
-            context.Database.Migrate();
         }
 
         public void SeedData()
