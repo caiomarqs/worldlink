@@ -1,5 +1,4 @@
-<img src="./WorldLink/wwwroot/images/logo-black.svg"/>
-
+<div style="text-align:center"><img src="./WorldLink/wwwroot/images/logo-black.svg" style="margin: auto;"/></div>
 ---
 
 
@@ -8,13 +7,13 @@ O WorldLink, foi desenvolvido utilizando **.Net Core** e toda sua stack de desen
 
 ##### [Clique aqui para ver a demo do sistema](https://worldlink-app.azurewebsites.net/)
 
-
+<br>
 
 ## Setup do Projeto
 
 Basta baixar o projeto e abrir a solução no Visual Studio 2019, assim as dependências serão instaladas.
 
-
+<br/>
 
 ### Configuração do Banco de Dados
 
@@ -34,7 +33,7 @@ No arquivo [`appsettings.json`](./WorldLink/appsettings.json), está presente as
 
 ````json
 {
-	...
+  ...
   "ConnectionStrings": {
     "local": "Server=(localdb)\\MSSQLLocalDB;Database=WorldLinkDB",
     "sqlserver": "Server=localhost,1433;Database=WorldLinkDB;User Id=sa;Password=sqlcaio@caio;",
@@ -53,18 +52,17 @@ Para qualquer uma das strings que vá utilizar, é necessário verificar a class
 ````csharp
 public void ConfigureServices(IServiceCollection services)
         {
-			...
+	    ...
             //Mudar o parametro de Configuration.GetConnectionString(<string_de_conn>),
             //Para o quer usar, como: "azure", "local", "sqlserver"
             services.AddDbContext<WorldLinkDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("azure"))
             );
-
-           	...
+	    ...
         }
 ````
 
-
+<br>
 
 #### Banco em Memória
 
@@ -72,15 +70,16 @@ Se no passo anterior for alterado para "local", é preciso aplicar as migrations
 
 - Vá no menu `Ferramentas > Gerenciador de Pacotes do NuGet > Console do Gerenciador de Pacotes do NuGet` :
 
-<img src="./.github/images/readme1.png" style="zoom:80%;" />
+<div style="text-align:center"><img src="./.github/images/readme1.png" style="zoom:80%;" /></div>
 
 
 
 - Com o console aberto, digite o comando `Update-Database` e o Entity Framework fará as alterações necessárias na base de dados:
+<div style="text-align:center"><img src="./.github/images/readme2.png" style="zoom:70%;" /></div>
 
-<img src="./.github/images/readme2.png" style="zoom:70%;" />
 
 
+<br/>
 
 #### Instância do SQLServer
 
@@ -91,10 +90,11 @@ Para a instância do SQLServer, lembre-se de fazer as alterações em [`appsetti
   ou
 
 - Executar o script [`create.sql`](./create.sql) em sua base, **caso execute esse passo não aplique as migrations**:
+<div style="text-align:center"><img src="./.github/images/readme3.png" style="zoom:70%;" /></div>
 
-<img src="./.github/images/readme3.png" style="zoom:70%;" />
 
 
+<br/>
 
 #### Instância na Azure
 
