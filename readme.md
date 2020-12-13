@@ -5,7 +5,7 @@
 
 O WorldLink, foi desenvolvido utilizando **.Net Core** e toda sua stack de desenvolvimento com o **Entity Framework Core**.
 
-##### [Clique aqui para ver a demo do sistema](https://worldlink-app.azurewebsites.net/)
+##### <a href="https://worldlink-app.azurewebsites.net/" target="_blank">Clique aqui para ver a demo do sistema</a>
 
 <br>
 
