@@ -1,6 +1,6 @@
-<div style="text-align:center"><img src="./WorldLink/wwwroot/images/logo-black.svg" style="margin: auto;"/></div>
----
-
+<h1  align="center">
+	<img src="./WorldLink/wwwroot/images/logo-black.svg" style="margin: auto;"/>
+</h1>
 
 
 O WorldLink, foi desenvolvido utilizando **.Net Core** e toda sua stack de desenvolvimento com o **Entity Framework Core**.
@@ -64,24 +64,28 @@ public void ConfigureServices(IServiceCollection services)
 
 <br>
 
-#### Banco em Memória
+### Banco em Memória
 
 Se no passo anterior for alterado para "local", é preciso aplicar as migrations do Entity Framework na base de dados. Para isso siga os passo a baixo:
 
 - Vá no menu `Ferramentas > Gerenciador de Pacotes do NuGet > Console do Gerenciador de Pacotes do NuGet` :
 
-<div style="text-align:center"><img src="./.github/images/readme1.png" style="zoom:80%;" /></div>
+<p align="center">
+    <img src="./.github/images/readme1.png" style="zoom:80%;" />
+</p>
 
 
 
 - Com o console aberto, digite o comando `Update-Database` e o Entity Framework fará as alterações necessárias na base de dados:
-<div style="text-align:center"><img src="./.github/images/readme2.png" style="zoom:70%;" /></div>
+<p align="center">
+    <img src="./.github/images/readme2.png" style="zoom:70%;" />
+</p>
 
 
 
 <br/>
 
-#### Instância do SQLServer
+### Instância do SQLServer
 
 Para a instância do SQLServer, lembre-se de fazer as alterações em [`appsettings.json`](./WorldLink/appsettings.json) e  [`Startup.cs`](./WorldLink/Startup.cs) explicadas anteriormente. Agora existe duas opções para a criação da base:
 
@@ -90,13 +94,15 @@ Para a instância do SQLServer, lembre-se de fazer as alterações em [`appsetti
   ou
 
 - Executar o script [`create.sql`](./create.sql) em sua base, **caso execute esse passo não aplique as migrations**:
-<div style="text-align:center"><img src="./.github/images/readme3.png" style="zoom:70%;" /></div>
+<p align="center">
+    <img src="./.github/images/readme3.png" style="zoom:70%;" />
+</p>
 
 
 
 <br/>
 
-#### Instância na Azure
+### Instância na Azure
 
 A instancia da Azure, já está pré-configurada, é possivel se conectar fazendo a alteração para `"azure"` em [`Startup.cs`](./WorldLink/Startup.cs).
 
