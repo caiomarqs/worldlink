@@ -70,6 +70,7 @@
             #public > .container > .content > p {
                 text-align: left;
                 margin-bottom: 32px;
+                width: 100%;
             }
 
         #public > .container > .image {
