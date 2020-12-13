@@ -1,6 +1,5 @@
 ﻿.login {
-    height: calc(100vh - 216px);
-    
+    min-height: calc(100vh - 216px);
 }
 
 
@@ -19,6 +18,10 @@
         display: flex;
         flex-direction: column;
     }
+
+        .login > .container > form > img {
+            height:12px;
+        }
 
         .login > .container > form > p {
             text-align: center;
