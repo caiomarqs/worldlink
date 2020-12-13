@@ -8,17 +8,21 @@
 }
 
 <div class="container dash">
-    <form class="form-inline" asp-action="Filtar">
-        <input name="email" placeholder="Insira o que quer buscar" />
+    <form class="form-inline" asp-action="Filtar" method="get">
+        <input name="email" placeholder="Insira o email que quer buscar" />
         <input type="submit" value="Buscar" />
     </form>
 
 
-    @if (Model.Count == 0)
+    @if (Model?.Count == 0)
     {
         <p>Não possui nenhum cadastro na base de dados!</p>
     }
-    else
+    @if (Model == null)
+    {
+        <p>Não foi encontrado nenhum resultado para a pesquisa!</p>
+    }
+    @if (Model?.Count > 0)
     {
         <table>
             <tr>
@@ -41,4 +45,12 @@
             }
         </table>
     }
+
+    @if (TempData["searchFlag"] != null)
+    {
+        <form class="form-inline" asp-action="Index" method="get">
+            <input type="submit" value="Limpar Busca" />
+        </form>
+    }
+
 </div>

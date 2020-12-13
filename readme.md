@@ -20,12 +20,12 @@ Basta baixar o projeto e abrir a solução no Visual Studio 2019, assim as depen
 Existem três possibilidades para a utilização do banco de dados: 
 
 - Utilizando o banco em memória criado pelo o Entity Framework;
-- Utilizando alguma instância que você tenha acesso;
+- Utilizando alguma instância do SQLServer que você tenha acesso;
 - Utilizando um banco pré-configurado na Azure.
 
 
 
-**Visando facilitar o setup, existe uma base de dados na Azure já configurada, mas caso queria usar outra, base siga o passo a passo:**
+**Visando facilitar o setup, existe uma base de dados na Azure que está configurada, mas caso queria usar outra, base siga o passo a passo:**
 
 
 
@@ -45,9 +45,9 @@ No arquivo [`appsettings.json`](./WorldLink/appsettings.json), está presente as
 
 
 
-O único valor que necessita ser alterado caso deseja utilizar uma instância própria do SQLServer, seria o valor em `"sqlserver"`.
+O único valor que necessita ser alterado, caso deseja utilizar uma instância própria do SQLServer, seria o valor em `"sqlserver"`.
 
-Para qualquer uma das strings que vá utilizar, é necessário verificar a classe [`Startup.cs`](./WorldLink/Startup.cs) e o método `ConfigureServices`, alterar o parâmetro de `Configuration.GetConnectionString(<string_de_conn>)`
+Para qualquer uma das opções, é necessário verificar a classe [`Startup.cs`](./WorldLink/Startup.cs) e o método `ConfigureServices`, e alterar o parâmetro de `Configuration.GetConnectionString(<string_de_conn>)`
 
 ````csharp
 public void ConfigureServices(IServiceCollection services)
@@ -66,7 +66,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### Banco em Memória
 
-Se no passo anterior for alterado para "local", é preciso aplicar as migrations do Entity Framework na base de dados. Para isso siga os passo a baixo:
+Se no passo anterior a alteração for para "local", é preciso aplicar as migrations do Entity Framework na base de dados. Para isso siga os passo a baixo:
 
 - Vá no menu `Ferramentas > Gerenciador de Pacotes do NuGet > Console do Gerenciador de Pacotes do NuGet` :
 
@@ -87,7 +87,7 @@ Se no passo anterior for alterado para "local", é preciso aplicar as migrations
 
 ### Instância do SQLServer
 
-Para a instância do SQLServer, lembre-se de fazer as alterações em [`appsettings.json`](./WorldLink/appsettings.json) e  [`Startup.cs`](./WorldLink/Startup.cs) explicadas anteriormente. Agora existe duas opções para a criação da base:
+Para a instância do SQLServer, lembre-se de fazer as alterações em [`appsettings.json`](./WorldLink/appsettings.json) e  [`Startup.cs`](./WorldLink/Startup.cs), explicadas anteriormente. Agora existe duas opções para a criação da base:
 
 - Aplicar os passos para o **Banco em Memória**
 

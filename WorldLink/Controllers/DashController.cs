@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WorldLink.Models;
 using WorldLink.Repositories;
 
 namespace WorldLink.Controllers
@@ -26,6 +27,7 @@ namespace WorldLink.Controllers
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("userId")))
             {
                 ViewBag.userId = HttpContext.Session.GetString("userId");
+
                 var contatos = _contatoRepository.ListAll();
                 return View(contatos);
             }
@@ -33,16 +35,19 @@ namespace WorldLink.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult Filtar(string email)
         {
+            ViewBag.userId = HttpContext.Session.GetString("userId");
+            TempData["searchFlag"] = true;
+
             var contatosFiltrados = _contatoRepository.Query(
                 contato => contato.Email.Contains(email)
             );
 
             if (contatosFiltrados.Count == 0)
             {
-                return RedirectToAction("Index");
+                return View("Index", null);
             }
 
             return View("Index", contatosFiltrados);
