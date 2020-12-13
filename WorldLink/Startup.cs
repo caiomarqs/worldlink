@@ -29,14 +29,8 @@ namespace WorldLink
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
 
-            //Para rodar no banco em memoria do EntityFramework, 
-            //mude o parametro de GetConnectionString para "local",
-            //Rode as migrations para criar o DB (exemplo no readme.md)
-            //--- ou ----
-            //Para o sqlsever troque para "sqlserver", 
-            //lembre-se de trocar a string de conexao em appsettings.json
-            //As tabelas podem ser criadas pelo o script create.sql , 
-            //ou pode ser aplicadas as migrations para a criação das tabelas
+            //Mudar o parametro de Configuration.GetConnectionString(<string_de_conn>),
+            //Para o quer usar, como: "azure", "local", "sqlserver"
             services.AddDbContext<WorldLinkDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("azure"))
             );

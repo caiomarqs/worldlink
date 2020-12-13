@@ -1,0 +1,103 @@
+<img src="./WorldLink/wwwroot/images/logo-black.svg"/>
+
+---
+
+
+
+O WorldLink, foi desenvolvido utilizando **.Net Core** e toda sua stack de desenvolvimento com o **Entity Framework Core**.
+
+##### [Clique aqui para ver a demo do sistema](https://worldlink-app.azurewebsites.net/)
+
+
+
+## Setup do Projeto
+
+Basta baixar o projeto e abrir a solução no Visual Studio 2019, assim as dependências serão instaladas.
+
+
+
+### Configuração do Banco de Dados
+
+Existem três possibilidades para a utilização do banco de dados: 
+
+- Utilizando o banco em memória criado pelo o Entity Framework;
+- Utilizando alguma instância que você tenha acesso;
+- Utilizando um banco pré-configurado na Azure.
+
+
+
+**Visando facilitar o setup, existe uma base de dados na Azure já configurada, mas caso queria usar outra, base siga o passo a passo:**
+
+
+
+No arquivo [`appsettings.json`](./WorldLink/appsettings.json), está presente as strings de conexão para a comunicação com o banco de dados:
+
+````json
+{
+	...
+  "ConnectionStrings": {
+    "local": "Server=(localdb)\\MSSQLLocalDB;Database=WorldLinkDB",
+    "sqlserver": "Server=localhost,1433;Database=WorldLinkDB;User Id=sa;Password=sqlcaio@caio;",
+    "azure": "Server=tcp:worldlinkdbserver.database.windows.net,1433;Initial Catalog=WorldLinkDB;Persist Security Info=False;User ID=worldlink;Password=Sql@sql123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;"
+  }
+}
+
+````
+
+
+
+O único valor que necessita ser alterado caso deseja utilizar uma instância própria do SQLServer, seria o valor em `"sqlserver"`.
+
+Para qualquer uma das strings que vá utilizar, é necessário verificar a classe [`Startup.cs`](./WorldLink/Startup.cs) e o método `ConfigureServices`, alterar o parâmetro de `Configuration.GetConnectionString(<string_de_conn>)`
+
+````csharp
+public void ConfigureServices(IServiceCollection services)
+        {
+			...
+            //Mudar o parametro de Configuration.GetConnectionString(<string_de_conn>),
+            //Para o quer usar, como: "azure", "local", "sqlserver"
+            services.AddDbContext<WorldLinkDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("azure"))
+            );
+
+           	...
+        }
+````
+
+
+
+#### Banco em Memória
+
+Se no passo anterior for alterado para "local", é preciso aplicar as migrations do Entity Framework na base de dados. Para isso siga os passo a baixo:
+
+- Vá no menu `Ferramentas > Gerenciador de Pacotes do NuGet > Console do Gerenciador de Pacotes do NuGet` :
+
+<img src="./.github/images/readme1.png" style="zoom:80%;" />
+
+
+
+- Com o console aberto, digite o comando `Update-Database` e o Entity Framework fará as alterações necessárias na base de dados:
+
+<img src="./.github/images/readme2.png" style="zoom:70%;" />
+
+
+
+#### Instância do SQLServer
+
+Para a instância do SQLServer, lembre-se de fazer as alterações em [`appsettings.json`](./WorldLink/appsettings.json) e  [`Startup.cs`](./WorldLink/Startup.cs) explicadas anteriormente. Agora existe duas opções para a criação da base:
+
+- Aplicar os passos para o **Banco em Memória**
+
+  ou
+
+- Executar o script [`create.sql`](./create.sql) em sua base, **caso execute esse passo não aplique as migrations**:
+
+<img src="./.github/images/readme3.png" style="zoom:70%;" />
+
+
+
+#### Instância na Azure
+
+A instancia da Azure, já está pré-configurada, é possivel se conectar fazendo a alteração para `"azure"` em [`Startup.cs`](./WorldLink/Startup.cs).
+
+##### obs: A base na Azure já pode estar populada.
